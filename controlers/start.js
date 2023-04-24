@@ -4,14 +4,17 @@ module.exports = {
     start: async (ctx) => {
         const keyboard = Keyboard.make([
             [
-                'Button 1',
-                'Button 2'
+                "Записатись",
+                "Скасувати запис"
             ], 
-            ['Button 3'], 
-            ['Button 4']
+            ["Наші майстри"], 
+            ["Зв'язатись з нами"]
         ]);
-    
-        await ctx.reply('Simple built-in keyboard', keyboard.reply());
+   
+        await ctx.reply(
+            'Hi, I`m a chatbot at the barbershop "TestbarBershopBot". I will help you an appointment with a hairdresser or cancel your appointment with a hairdresser. I can tell you about hairdressers and help you get in touch with the manager', 
+            keyboard.reply()
+        );
         // await ctx.reply('Simple inline keyboard', keyboard.inline());
     
     }
