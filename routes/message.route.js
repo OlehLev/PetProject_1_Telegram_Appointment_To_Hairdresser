@@ -1,10 +1,31 @@
+const { Keyboard, Key } = require('telegram-keyboard');
+// const { message } = require('telegraf/filters');
+
 module.exports = {
     messageRoute: async (ctx) => {
+        // console.log(ctx.message.chat.id);
         if(ctx.message.text === "Записатись") {
-            await ctx.telegram.sendMessage(
-                ctx.message.chat.id, 
-                `The new keyboard with questions and options answer`
+            
+            // const chatId = ctx.message.chat.id;
+
+            const keyboardInline = Keyboard.inline(
+                [
+                    Key.callback('"Обрати майстра"', 'action1'),
+                    Key.callback("Обрати дату", 'action2')                    
+                ]
+                // [
+                //     "Обрати майстра",
+                //     "Обрати дату"                    
+                // ]
             );
+            const keyboard = Keyboard.reply(["Назад"]);
+        
+            await ctx.reply('Simple inline keyboard', keyboardInline);
+            await ctx.reply('Simple inline keyboard', keyboard);
+            // await ctx.telegram.sendMessage(
+            //     ctx.message.chat.id, 
+            //     `The new keyboard with questions and options answer`
+            // );
             return ctx;
         };
     
